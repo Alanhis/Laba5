@@ -24,7 +24,7 @@ $pdf->SetFont('DejaVu','',14);
 $pdf->AddPage();
 
 // First table: output all columns
-$pdf->Table($link,"SELECT iq,name_program,DATE_FORMAT(data_create, '%d.%m.%Y') AS data_create,name_creator,city_creator,type_language,typeworking_language FROM program  , creator  , language  WHERE 1");
+$pdf->Table($link,"SELECT iq,name_language,name_program,DATE_FORMAT(data_create, '%d.%m.%Y') AS data_create,name_creator,city_creator,type_language,typeworking_language FROM program  , creator  , language  WHERE 1");
 $pdf->AddPage();
 // Second table: specify 3 columns
 
