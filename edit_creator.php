@@ -5,7 +5,7 @@
  $link=mysqli_connect("localhost","f0470399_programlanguage","BEpBd03x");
 mysqli_query( $link,'set names utf8');
  mysqli_select_db($link,"f0470399_programlanguage") or die("Нет такой таблицы!");
- $rows=mysqli_query($link,"SELECT iq_creator , name_creator , city_creator  FROM creator");
+ $rows=mysqli_query($link,"SELECT iq_creator , name_creator , city_creator  FROM creator WHERE iq_creator =".$_GET['iq_creator']." ");
  while ($st = mysqli_fetch_array($rows)) {
 $iq_creator=$_GET['iq_creator'];
 
