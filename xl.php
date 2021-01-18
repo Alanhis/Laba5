@@ -36,6 +36,7 @@ $objPHPExcel->getActiveSheet()->SetCellValue('D1','name_creator');
 $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'city_creator');
 $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'type_language');
 $objPHPExcel->getActiveSheet()->SetCellValue('G1','typeworking_language');
+$objPHPExcel->getActiveSheet()->SetCellValue('H1','name_language');
 while($row = mysqli_fetch_array($result)){
     // Set cell An to the "name" column from the database (assuming you have a column called name)
     //    where n is the Excel row number (ie cell A1 in the first row)
@@ -48,11 +49,13 @@ while($row = mysqli_fetch_array($result)){
     $objPHPExcel->getActiveSheet()->SetCellValue('E'.($rowCount+1), $row['city_creator']);
     $objPHPExcel->getActiveSheet()->SetCellValue('F'.($rowCount+1), $row['type_language']);
     $objPHPExcel->getActiveSheet()->SetCellValue('G'.($rowCount+1), $row['typeworking_language']);
+    $objPHPExcel->getActiveSheet()->SetCellValue('H'.($rowCount+1), $row['name_language']);
     $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
     $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(20);
     $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
     $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
     $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(20);
     // Increment the Excel row counter
     $rowCount++;
 }
