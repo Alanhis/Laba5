@@ -5,7 +5,7 @@
  $link=mysqli_connect("localhost","f0470399_programlanguage","BEpBd03x");
 mysqli_query( $link,'set names utf8');
  mysqli_select_db($link,"f0470399_programlanguage") or die("Нет такой таблицы!");
- $rows=mysqli_query($link,"SELECT name_language , type_language , data_language , typeworking_language , Author FROM language");
+ $rows=mysqli_query($link,"SELECT name_language , type_language , data_language , typeworking_language , Author FROM language WHERE iq_language =".$_GET['id_lan1']." ");
  while ($st = mysqli_fetch_array($rows)) {
 $id_lan=$_GET['id_lan'];
  $name = $st['name_language'];
