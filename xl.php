@@ -13,7 +13,8 @@ $DB_DBName = "f0470399_programlanguage";         //MySQL Database Name
 $filename = "Hismatullin_nakonets";         //File Name
 /*******YOU DO NOT NEED TO EDIT ANYTHING BELOW THIS LINE*******/
 //create MySQL connection
-$sql = "SELECT a.iq,a.name_program,a.data_create,b.name_creator,b.city_creator,c.type_language,c.typeworking_language FROM program a , creator b , language c WHERE 1";
+$sql = "SELECT program.iq,program.name_program,DATE_FORMAT(data_create, '%d.%m.%Y') AS data_create,creator.name_creator,creator.city_creator,language.name_language,language.type_language,language.typeworking_language from program JOIN language ON program.iq_language=language.iq_language JOIN creator on program.iq_creator=creator.iq_creator
+";
 $Connect = @mysqli_connect($DB_Server, $DB_Username, $DB_Password) or die("Couldn't connect to MySQL:<br>" . mysqli_error($Connect ) . "<br>" . mysqli_errno($Connect ));
 mysqli_set_charset($Connect,"windows-1251");//select database
 $Db = @mysqli_select_db( $Connect,$DB_DBName) or die("Couldn't select database:<br>" . mysqli_error($Connect ). "<br>" . mysqli_errno($Connect ));
@@ -43,7 +44,7 @@ while($row = mysqli_fetch_array($result)){
     $objPHPExcel->getActiveSheet()->SetCellValue('A'.($rowCount+1), $row['iq']);
     // Set cell Bn to the "age" column from the database (assuming you have a column called age)
     //    where n is the Excel row number (ie cell A1 in the first row)
-    $objPHPExcel->getActiveSheet()->SetCellValue('B'.($rowCount+1), $row['name_program']);
+ $objPHPExcel->getActiveSheet()->SetCellValue('B'.($rowCount+1), $row['name_program']);
     $objPHPExcel->getActiveSheet()->SetCellValue('C'.($rowCount+1), date("d.m.Y", strtotime($row['data_create'])));
     $objPHPExcel->getActiveSheet()->SetCellValue('D'.($rowCount+1), $row['name_creator']);
     $objPHPExcel->getActiveSheet()->SetCellValue('E'.($rowCount+1), $row['city_creator']);
